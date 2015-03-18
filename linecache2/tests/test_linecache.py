@@ -63,7 +63,7 @@ class LineCacheTests(unittest.TestCase):
 
         # Check whether lines correspond to those from file iteration
         for entry in TESTS:
-            filename = os.path.join(TEST_PATH, entry) + '.py'
+            filename = os.path.join(TEST_PATH, entry) + '.pytest'
             with open(filename) as file:
                 for index, line in enumerate(file):
                     self.assertEqual(line, getline(filename, index + 1))
@@ -91,7 +91,7 @@ class LineCacheTests(unittest.TestCase):
     def test_clearcache(self):
         cached = []
         for entry in TESTS:
-            filename = os.path.join(TEST_PATH, entry) + '.py'
+            filename = os.path.join(TEST_PATH, entry) + '.pytest'
             cached.append(filename)
             linecache.getline(filename, 1)
 
@@ -138,7 +138,7 @@ class LineCacheTests(unittest.TestCase):
             for index, line in enumerate(source):
                 self.assertEqual(line, getline(source_name, index + 1))
                 source_list.append(line)
- 
+
     def test_lazycache_no_globals(self):
         lines = linecache.getlines(FILENAME)
         linecache.clearcache()
